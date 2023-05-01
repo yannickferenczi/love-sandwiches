@@ -17,7 +17,7 @@ def get_sales_data():
     """
     Get sales figures input from the user.
     Run a while loop to collect a valid string of data from the user
-    via the terminal, which must be a string of 6 numbers separated 
+    via the terminal, which must be a string of 6 numbers separated
     by commas. The loop will repeatedly request data, until it is valid.
     """
     while True:
@@ -50,7 +50,6 @@ def validate_data(values):
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
-    
     return True
 
 
@@ -80,14 +79,13 @@ def calculate_surplus_data(sales_row):
     for stock, sales in zip(stock_row, sales_row):
         surplus = int(stock) - sales
         surplus_data.append(surplus)
-        
     return surplus_data
 
 
 def get_last_5_entries_sales():
     """
     Collects columns of data from sales worksheet, collecting
-    the last 5 entries for each sandwich and returns the data 
+    the last 5 entries for each sandwich and returns the data
     as a list of lists
     """
     sales = SHEET.worksheet("sales")
@@ -96,7 +94,6 @@ def get_last_5_entries_sales():
     for ind in range(1, 7):
         column = sales.col_values(ind)[-5:]
         columns.append(column)
-    
     return columns
 
 
@@ -106,7 +103,6 @@ def calculate_stock_data(data):
     """
     print("Calculating stock data...\n")
     new_stock_data = []
-    
     for column in data:
         int_column = [int(num) for num in column]
         average = sum(int_column) / len(int_column)
@@ -132,5 +128,3 @@ def main():
 
 print("Welcome to Love Sandwiches Data Automation")
 main()
-
-
